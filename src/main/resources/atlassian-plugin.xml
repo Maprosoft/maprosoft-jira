@@ -13,20 +13,59 @@
     <!-- add our web resources -->
     <web-resource key="maprosoft-jira-resources" name="maprosoft-jira Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="maprosoft-jira.css" location="/css/maprosoft-jira.css"/>
-        <resource type="download" name="maprosoft-jira.js" location="/js/maprosoft-jira.js"/>
-        <resource type="download" name="images/" location="/images"/>
 
+        <resource type="download" name="maprosoft-issue-report-panel.css" location="/css/maprosoft-issue-report-panel.css">
+            <property key="content-type" value="text/css"/>
+        </resource>
+        <resource type="download" name="maprosoft-issue-report-panel.js" location="/js/maprosoft-issue-report-panel.js"/>
+        
+        <resource type="download" name="mapPopup.css" location="/css/mapPopup.css">
+            <property key="content-type" value="text/css"/>
+        </resource>
+        <resource type="download" name="images/" location="images"/>
+        <resource type="download" name="to-fullscreen-outlined-30x30.png" location="images/fullscreen/to-fullscreen-outlined-30x30.png">
+		   <param name="content-type" value="image/png"/>
+		</resource>
+        <!--  
+        <resource type="download" name="images-fullscreen" location="/images/fullscreen"/>
+        <resource type="download" name="images-fullscreen-to" location="/images/fullscreen/to-fullscreen-outlined-30x30.png"/>
+        -->
+        
+		<!--
+		<context>atl.general</context>
+		<context>space</context>
+        <context>page</context>
         <context>maprosoft-jira</context>
+		-->
+        <context>atl.general</context>
     </web-resource>
     
     <!-- publish our component -->
-    <component key="myPluginComponent" class="com.maprosoft.maproweb.jira.MyPluginComponentImpl" public="true">
-        <interface>com.maprosoft.maproweb.jira.MyPluginComponent</interface>
+    <component key="maprosoft-jira-component" class="com.maprosoft.maproweb.jira.MaprosoftJiraComponentImpl" public="true">
+        <interface>com.maprosoft.maproweb.jira.MaprosoftJiraComponent</interface>
     </component>
     
     <!-- import from the product container -->
     <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
     
+    <web-panel key="maprosoft-map-panel" location="atl.jira.view.issue.right.context">
+        <label key="com.maprosoft.maproweb.jira.location.panel.title"/>
+        <resource name="view" type="velocity" location="templates/maprosoft-issue-report-panel.vm"/>
+        <context-provider class="com.maprosoft.maproweb.jira.LocationContextProvider"/>
+	</web-panel>
+
+	<rest name="Maprosoft Jira Resource" i18n-name-key="maprosoft-jira-resource.name" key="maprosoft-jira-resource" path="/maprosoft-jira" version="1.0">
+		<description key="maprosoft-jira-resource.description">The Maprosoft Jira Resource Plugin</description>
+	</rest>
+	
+	<component-import key="ao" name="Active Objects service" interface="com.atlassian.activeobjects.external.ActiveObjects">
+	  <description>Component to access Active Objects functionality from the plugin</description>
+	</component-import>
+	
+	<ao key="ao-module">
+		<description>The module configuring the Active Objects service used by this plugin</description>
+		<entity>com.maprosoft.maproweb.jira.ao.IssueLocationEntity</entity>
+	</ao>
+	
+	
 </atlassian-plugin>

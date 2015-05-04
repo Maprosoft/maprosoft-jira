@@ -1,0 +1,182 @@
+#maprosoft-issue-report-panel, #mainContainer {
+	/* Just to center the form on the page */
+	margin: 0.5em auto;
+	width: 400px;
+
+	/* To see the limits of the form */
+	padding: 0.5em;
+	border: 1px solid #CCC;
+	border-radius: 0.5em;
+
+	/* To make sure that all text field have the same font settings
+	   By default, textarea are set with a monospace font */
+	/*font-family:sans-serif;*/
+}
+
+.hiddenComponent {
+	display: none;
+}
+
+.message {
+	color: blue;
+}
+
+.error {
+	color: #CC0000 !important;
+}
+
+.iconLarger {
+	font-size: 1.5em;
+}
+
+#topMessage {
+	font-style: normal;
+	text-align: center;
+}
+
+.secondaryInputGroup {
+	margin-top: 0.5em;
+}
+
+.primaryInputGroup {
+	margin-top: 1em;
+}
+
+.label {
+	font-weight: bolder;
+	font-size: 0.75em;
+	color: #333333;
+}
+
+.input {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.withBorder {
+	/* To harmonize the look & feel of text field border */
+	border: 1px solid #999;
+}
+
+.withoutBorder {
+	border: 0px solid #999;
+}
+
+.withBorder:focus, .textarea:focus {
+	/* To give a little highlight on active elements */
+	border-color: #0099FF;
+}
+
+.inputError {
+	border-color: red !important;
+	border-width: 1px !important;
+}
+
+.mainGroupInput {
+	width: 390px;
+}
+
+.locationEntryContainer {
+	margin-top: 0.5em;
+	padding: 0px;
+    display: block !important;
+    width: 100%;
+    /*height: 100%;*/
+    float: none !important;
+    overflow-x: hidden;
+   	overflow-y: hidden;
+	border: 0px solid red;
+
+    float: none !important;
+    white-space: nowrap !important;
+}
+
+.secondaryGroup {
+	/*padding-left: 10px;*/
+	border: 0px solid #0099FF;
+	padding-bottom: 0.5em;
+}
+
+.secondaryGroupInput {
+	width: 100%;
+}
+
+.locationEntry {
+    display: inline-block !important;
+	width: calc(100% - 1px);
+	margin-left: -3px;
+	vertical-align: top;
+}
+
+.textarea {
+	/* To properly align multiline text field with their label */
+	vertical-align: top;
+
+	/* To give enough room to type some text */
+	height: 5em;
+
+	/* To allow users to resize any textarea vertically
+	   It works only on Chrome, Firefox and Safari */
+	resize: vertical;
+}
+
+.toolbar {
+	/* To position the buttons to the same position of the text fields */
+	/*padding-left: 90px;*/ /* same size as the label elements */
+	margin-left: auto;
+	margin-right: auto;
+	width: 150px;
+	overflow: hidden;
+	/*margin-right: 50%;*/
+	
+	text-align: center;
+}
+
+#mapContainer {
+	display: block;
+	width: 100%;
+	height: 300px;
+    margin: 0px;
+    padding: 0px
+}
+
+.mapCanvas {
+	height: 100%;
+	width: 100%;
+}
+
+#photoUploadProgress p {
+	display: block;
+	width: 100%;
+	padding: 2px 5px;
+	margin: 2px 0;
+	border: 1px inset #446;
+	border-radius: 5px;
+}
+
+#photoUploadProgress p.success {
+	background: #0c0 none 0 0 no-repeat;
+}
+
+#photoUploadProgress p.failed {
+	background: #c00 none 0 0 no-repeat;
+}
+
+.photoZoneItem {
+	float: left;
+	margin-left: 10px
+}
+
+.centered {
+	margin-left: auto;
+	margin-right: auto;
+	width: max-content;
+	width: -webkit-max-content;
+	width: -webkit-moz-content;
+}
+
+#fullscreen-controls {
+	padding-top: 6px;
+	padding-left: 6px;
+}
+

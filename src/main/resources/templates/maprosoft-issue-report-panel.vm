@@ -1,0 +1,203 @@
+		<div id="maprosoft-issue-report-panel" style="width:100%">
+			<div id="topMessage" class="message">
+			</div>
+			<div id="helpNotes" class="message">
+			
+			</div>
+			<form id="issueReportForm" action="IssueReport" method="POST">
+			
+				<input id="currentIssueIdContext" type="hidden" value="$currentIssueId">
+				<input id="currentIssueKeyContext" type="hidden" value="$currentIssueKey">
+				
+				<div id="issueTypesGroup" class="primaryInputGroup hiddenComponent">
+					<label for="name" class="label">Issue Type:</label>
+					<br/>
+					<select id="issueTypes" name="ProblemType" class="input withBorder mainGroupInput" requirement="mandatory" inputIndex="10">
+					</select>
+				</div>
+	
+				<div class="primaryInputGroup">
+<!--
+					<label for="location" class="label hiddenComponent">Location:</label>
+					<br/>
+-->
+					<div class="input withoutBorder mainGroupInput">
+						<div class="centered">
+							<input id="mapLocationEntryOption" type="radio" name="locationChoice" inputIndex="20" checked/>
+							<span id="mapLocationEntryOptionLabel">Map</span>
+							<input id="addressLocationEntryOption" type="radio" name="locationChoice" inputIndex="21"/>
+							<span id="addressLocationEntryOptionLabel">Address</span>
+							<input id="deviceLocationEntryOption" type="radio" name="locationChoice" inputIndex="22"/>
+							<span id="deviceLocationEntryOptionLabel">Current</span>
+						</div>
+						<div id="locationEntryContainer" class="locationEntryContainer">
+							<div	id="mapLocationEntryGroup"
+									class="locationEntry secondaryGroup"
+									belongsTo="mapLocationEntryOption">
+								<div id="fullscreen-controls">
+									<img id="to-fullscreen"
+										src="../download/resources/com.maprosoft.maproweb.jira.maprosoft-jira:maprosoft-jira-resources/images/fullscreen/to-fullscreen-outlined-30x30.png">
+									<img id="from-fullscreen"
+										src="../download/resources/com.maprosoft.maproweb.jira.maprosoft-jira:maprosoft-jira-resources/images/fullscreen/from-fullscreen-outlined-30x30.png"
+										style="display:none">
+								</div>
+								<div id="mapContainer">
+									<div id="map-canvas" class="mapCanvas">
+									</div>
+								</div>
+							</div>
+							<div	id="addressLocationEntryGroup"
+									class="locationEntry secondaryGroup"
+									belongsTo="addressLocationEntryOption">
+								<div class="secondaryInputGroup">
+									<label for="addressLine1" class="label">Address:</label>
+									<br/>
+									<input type="text"
+											id="addressLine1"
+											name="AddressLine1"
+											class="input withBorder secondaryGroupInput"
+											requirement="mandatory"
+											inputIndex="50"
+											autocorrect="off"
+											autocapitalize="words">
+									<br/>
+									<input type="text"
+											id="addressLine2"
+											name="AddressLine2"
+											class="input withBorder secondaryGroupInput secondaryInputGroup"
+											inputIndex="51"
+											autocorrect="off"
+											autocapitalize="words">
+								</div>
+								<div class="secondaryInputGroup">
+									<label for="suburb" class="label">Suburb:</label>
+									<br/>
+									<input id="suburb" type="text" 
+											name="AddressSuburb" class="input withBorder secondaryGroupInput" inputIndex="52"
+											autocorrect="off"
+											autocapitalize="words">
+								</div>
+								<div class="secondaryInputGroup">
+									<label for="state" class="label">State:</label>
+									<br/>
+									<input id="state" type="text" 
+											name="AddressState" class="input withBorder secondaryGroupInput" inputIndex="53"
+											autocorrect="off"
+											autocapitalize="words">
+								</div>
+								<div class="secondaryInputGroup">
+									<label for="country" class="label">Country:</label>
+									<br/>
+									<input id="country" type="text"
+											name="AddressCountry" class="input withBorder secondaryGroupInput"  inputIndex="54"
+											autocorrect="off"
+											autocapitalize="words">
+								</div>
+							</div>
+							<div	id="deviceLocationEntryGroup"
+									class="locationEntry secondaryGroup"
+									belongsTo="deviceLocationEntryOption">
+								<br/>
+								Current location: 
+									<div id="devicePositionResult" style="display:block;opacity:0.0;padding:0.5em;height:2em;width:90%;text-align:center;white-space: normal;">
+										<span id="devicePositionCapturedMessage" class="hiddenComponent">position captured <span class="message iconLarger">&#9786;</span></span>
+										<span id="devicePositionSuccessInfo" class="hiddenComponent">
+											<span id="deviceLat"></span>, <span id="deviceLng"></span>
+											<br/>
+											<span id="deviceLocationAccuracy"></span>
+											<br/>
+											<a id="selectCurrentLocationButton" href="#" class="aui-button" inputIndex="58 style="display:none">
+												<span>Select current location on map</span>
+											</a>
+										</span>
+										<span id="devicePositionErrorInfo" class="hiddenComponent">
+											<br/>
+											<span id="deviceLocationErrorMessage"></span>
+										</span>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	
+				<div id="reporterInputGroup" class="primaryInputGroup hiddenComponent">
+					<label for="reporterName" class="label">Reporter Name:</label>
+					<br/>
+					<input id="reporterName" type="text" name="User-Name"
+							class="input withBorder mainGroupInput" requirement="mandatory" inputIndex="60"
+							autocorrect="off"
+							autocapitalize="words">
+				</div>
+	
+				<div class="primaryInputGroup hiddenComponent">
+					<label for="reporterPhone" class="label">Reporter Phone:</label>
+					<br/>
+					<input id="reporterPhone" 
+							type="tel"
+							name="User-Phone" class="input withBorder mainGroupInput" 
+							requirement="mandatory" inputIndex="61"
+							autocorrect="off"
+							autocapitalize="none">
+				</div>
+	
+				<div class="primaryInputGroup hiddenComponent">
+					<label for="reporterEmail" class="label">Reporter Email:</label>
+					<br/>
+					<input id="reporterEmail"
+							type="email" 
+							name="User-Email"
+							class="input withBorder mainGroupInput"
+							requirement="mandatory"
+							inputIndex="62"
+							autocorrect="off"
+							autocapitalize="none">
+				</div>
+<!--	
+				<div class="primaryInputGroup hiddenComponent">
+					<label for="issuePhoto" class="label">Photo:</label>
+					<br/>
+					<span id="photoZone">
+						<input id="photoUploadSelector" type="file" name="files[]"  style="display:none"/>
+						<button id="photoSelectButton" type="button" class="photoZoneItem" inputIndex="70">Photo...</button>
+						<img id="imagePreview" class="photoZoneItem" style="opacity:0.0;width:1px;border: 1px solid #000;" src=""/>
+						<div id="photoUploadProgress" class="photoZoneItem" style="width:100px;"></div>
+						<div id="photoUploadTick" class="photoZoneItem message iconLarger" style="display:none;">&radic;</div>
+						<div style="clear:both;"></div>
+					</span>
+				</div>
+-->	
+				<div class="primaryInputGroup hiddenComponent">
+					<label for="msg" class="label">Description:</label>
+					<br/>
+					<textarea id="description"
+							name="Description"
+							class="input withBorder mainGroupInput textarea"
+							requirement="mandatory"
+							inputIndex="80"
+							autocorrect="on"
+							autocapitalize="sentences"></textarea>
+				</div>
+				
+				<div class="centered">
+					<a id="submitButton" href="#" class="aui-button" inputIndex="90">
+						<span>Save Location</span>
+					</a>
+					<span id="saving-indicator" class="aui-icon aui-icon-wait" style="display:none"></span>
+					<!--
+					<a id="loadButton" href="#" class="aui-button" inputIndex="91">
+						<span>Load</span>
+					</a>
+					-->
+				</div>
+				<!--
+				<div class="toolbar primaryInputGroup">
+					<button id="submitButton" type="submit" class="button" inputIndex="90">Submit</button>
+				</div>
+				-->
+				<input type="hidden" name="APIKey" value="dUFxepwNf5n69o1Yy/6ZTMGUrOFukHCd"/>
+				<input id="locationTypeInput" type="hidden" name="LocationType" value=""/>
+				<input id="latitudeInput" type="hidden" name="Latitude" value=""/>
+				<input id="longitudeInput" type="hidden" name="Longitude" value=""/>
+				<input id="photoIdInput" type="hidden" name="PhotoImageId" value=""/>
+			</form>
+		</div>

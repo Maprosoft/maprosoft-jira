@@ -3,7 +3,7 @@ package it.com.maprosoft.maproweb.jira;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.atlassian.plugins.osgi.test.AtlassianPluginsTestRunner;
-import com.maprosoft.maproweb.jira.MyPluginComponent;
+import com.maprosoft.maproweb.jira.MaprosoftJiraComponent;
 import com.atlassian.sal.api.ApplicationProperties;
 
 import static org.junit.Assert.assertEquals;
@@ -12,9 +12,9 @@ import static org.junit.Assert.assertEquals;
 public class MyComponentWiredTest
 {
     private final ApplicationProperties applicationProperties;
-    private final MyPluginComponent myPluginComponent;
+    private final MaprosoftJiraComponent myPluginComponent;
 
-    public MyComponentWiredTest(ApplicationProperties applicationProperties,MyPluginComponent myPluginComponent)
+    public MyComponentWiredTest(ApplicationProperties applicationProperties,MaprosoftJiraComponent myPluginComponent)
     {
         this.applicationProperties = applicationProperties;
         this.myPluginComponent = myPluginComponent;

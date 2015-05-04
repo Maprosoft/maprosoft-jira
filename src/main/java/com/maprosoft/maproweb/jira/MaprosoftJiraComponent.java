@@ -1,6 +1,5 @@
 package com.maprosoft.maproweb.jira;
 
-public interface MyPluginComponent
-{
+public interface MaprosoftJiraComponent {
     String getName();
 }
