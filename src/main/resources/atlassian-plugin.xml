@@ -67,5 +67,9 @@
 		<entity>com.maprosoft.maproweb.jira.ao.IssueLocationEntity</entity>
 	</ao>
 	
+	<servlet name="Maprosoft Issue Location Servlet" class="com.maprosoft.maproweb.jira.servlet.MaprosoftJiraServlet" key="todo-list">
+		<description>A servlet providing issue locations.</description>
+		<url-pattern>/maprosoft/list</url-pattern>
+	</servlet>
 	
 </atlassian-plugin>

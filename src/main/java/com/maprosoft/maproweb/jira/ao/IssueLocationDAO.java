@@ -43,37 +43,37 @@ public class IssueLocationDAO {
 		issueLocationEntity.setCountry(issueLocationInfo.getCountry());
 		issueLocationEntity.save();
 	}
+
+	public static IssueLocationInfo[] findAllIssueLocations(final ActiveObjects ao) {
+		IssueLocationEntity[] issueLocationEntities = findAllEntities(ao);
+		if (issueLocationEntities != null && issueLocationEntities.length > 0) {
+			int count = issueLocationEntities.length;
+			IssueLocationInfo[] issueLocationInfos = new IssueLocationInfo[count];
+			for (int i = 0; i < count; i++) {
+				issueLocationInfos[i] = entityToInfo(issueLocationEntities[i]);
+			}
+			return issueLocationInfos;
+		} else {
+			return null;
+		}
+	}
 	
 	public static IssueLocationInfo findByIssueKey(final String issueKey, final ActiveObjects ao) {
 		IssueLocationEntity issueLocationEntity = findEntityByIssueKey(issueKey, ao);
 		if (issueLocationEntity == null) {
 			return null;
 		} else {
-			Long issueId = issueLocationEntity.getIssueId();
-			String locationTypeString = issueLocationEntity.getLocationType();
-			LocationType locationType = LocationType.parse(locationTypeString);
-			double latitude = issueLocationEntity.getLatitude();
-			double longitude = issueLocationEntity.getLongitude();
-			String line1 = issueLocationEntity.getLine1();
-			String line2 = issueLocationEntity.getLine2();
-			String suburb = issueLocationEntity.getSuburb();
-			String state = issueLocationEntity.getState();
-			String country = issueLocationEntity.getCountry();
-			final IssueLocationInfo issueLocationInfo = new IssueLocationInfo(
-					issueId,
-					issueKey,
-					locationType,
-					latitude,
-					longitude,
-					line1,
-					line2,
-					suburb,
-					state,
-					country);
+			final IssueLocationInfo issueLocationInfo = entityToInfo(issueLocationEntity);
 			return issueLocationInfo;
 		}
 	}
 	
+	private static IssueLocationEntity[] findAllEntities(final ActiveObjects ao) {
+		Query criteria = Query.select();
+		IssueLocationEntity[] issueLocationEntities = ao.find(IssueLocationEntity.class, criteria);
+		return issueLocationEntities;
+	}
+
 	private static IssueLocationEntity findEntityByIssueKey(final String issueKey, final ActiveObjects ao) {
 		Query criteria = Query.select().where("ISSUE_KEY = ?", String.valueOf(issueKey));
 		IssueLocationEntity[] issueLocationEntities = ao.find(IssueLocationEntity.class, criteria);
@@ -82,6 +82,33 @@ public class IssueLocationDAO {
 		} else {
 			return null;
 		}
+	}
+
+	private static IssueLocationInfo entityToInfo(
+			final IssueLocationEntity issueLocationEntity) {
+		Long issueId = issueLocationEntity.getIssueId();
+		String issueKey = issueLocationEntity.getIssueKey();
+		String locationTypeString = issueLocationEntity.getLocationType();
+		LocationType locationType = LocationType.parse(locationTypeString);
+		double latitude = issueLocationEntity.getLatitude();
+		double longitude = issueLocationEntity.getLongitude();
+		String line1 = issueLocationEntity.getLine1();
+		String line2 = issueLocationEntity.getLine2();
+		String suburb = issueLocationEntity.getSuburb();
+		String state = issueLocationEntity.getState();
+		String country = issueLocationEntity.getCountry();
+		final IssueLocationInfo issueLocationInfo = new IssueLocationInfo(
+				issueId,
+				issueKey,
+				locationType,
+				latitude,
+				longitude,
+				line1,
+				line2,
+				suburb,
+				state,
+				country);
+		return issueLocationInfo;
 	}
 
 }

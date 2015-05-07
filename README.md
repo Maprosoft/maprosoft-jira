@@ -22,6 +22,15 @@ Here are the main SDK commands you'll use to contribute to this add-on:
                    - 'pi' reinstalls the plugin into the running product instance
 * atlas-help    -- prints description for all commands in the SDK
 
+# Capabilities
+
+## Location Reporting
+
+Issue screens will have a location panel within the right section allowing the location to be reported.
+
+## Servlet
+
+Visit http://{base-url}/jira/plugins/servlet/maprosoft/list to list location information for all issues.
 
 # Support
 

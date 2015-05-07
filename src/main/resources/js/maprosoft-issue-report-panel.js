@@ -132,12 +132,18 @@ AJS.$(document).ready(function () {
 			// input becomes focussed in iOS.
 			var maxWidth = Math.min(screenWidth, windowWidth);
 			
+			var parentPanel = IR.maprosoftIssueReportPanel.parent();
+			if (parentPanel.length) {
+				var parentPanelWidth = parentPanel.width();
+				maxWidth = Math.min(screenWidth, parentPanelWidth);
+			}
+			
 			if (maxWidth > document.IR.maxFormWidth) {
 				var formWidth = document.IR.maxFormWidth;
 			} else if (maxWidth < document.IR.minFormWidth) {
 				var formWidth = document.IR.minFormWidth;
 			} else {
-				var formWidth = maxWidth - 44;
+				var formWidth = maxWidth;
 			}
 			IR.maprosoftIssueReportPanel.width(formWidth + "px");
 			$(".mainGroupInput").width(formWidth - 5 + "px");

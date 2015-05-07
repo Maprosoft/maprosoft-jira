@@ -171,7 +171,7 @@
 		<project.organization.url>http://www.maprosoft.com/</project.organization.url>
 		<project.name>maprosoft-jira</project.name>
 		<project.description>This is the com.maprosoft.maproweb.jira:maprosoft-jira plugin for Atlassian JIRA.</project.description>
-		<project.version>1.0.0-SNAPSHOT</project.version>
+		<project.version>1.0.1</project.version>
 		<jira.version>6.3.8</jira.version>
 		<ao.version>0.19.7</ao.version>
 		<amps.version>5.0.4</amps.version>
