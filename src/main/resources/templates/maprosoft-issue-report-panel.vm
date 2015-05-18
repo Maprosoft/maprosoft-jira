@@ -183,6 +183,7 @@
 						<span>Save Location</span>
 					</a>
 					<span id="saving-indicator" class="aui-icon aui-icon-wait" style="display:none"></span>
+					built by <a href="http://www.maprosoft.com" target="_blank">Maprosoft</a>
 					<!--
 					<a id="loadButton" href="#" class="aui-button" inputIndex="91">
 						<span>Load</span>
